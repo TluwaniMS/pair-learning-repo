@@ -13,7 +13,7 @@ const getUserById = async (userId) => {
 };
 
 const createUser = async ({ name, surname, email }) => {
- await UserModel.create({
+  await UserModel.create({
     name: name,
     surname: surname,
     email: email
@@ -23,7 +23,7 @@ const createUser = async ({ name, surname, email }) => {
 };
 
 const deleteUser = async (userId) => {
-   await UserModel.deleteOne({ _id: userId });
+  await UserModel.deleteOne({ _id: userId });
 
   return `Operation completed successfully.`;
 };
@@ -35,7 +35,7 @@ const updateUser = async (userId, { name, surname, email }) => {
     surname: surname,
     email: email
   });
-  
+
   return user;
 };
 
@@ -50,4 +50,10 @@ const linkBookToUser = async (userId, bookId) => {
   return `Operation completed successfully.`;
 };
 
-module.exports = { getAllUsers, deleteUser, updateUser, createUser, getUserById, linkBookToUser };
+const getUserByEmail = async (email) => {
+  const user = await UserModel.findOne({ email: email });
+
+  return user;
+};
+
+module.exports = { getAllUsers, deleteUser, updateUser, createUser, getUserById, linkBookToUser,getUserByEmail };
