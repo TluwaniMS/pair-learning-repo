@@ -35,4 +35,10 @@ const updateBook = async (bookId, { title, author, description, price }) => {
   return book;
 };
 
-module.exports = { createBook, deleteBook,updateBook,getAllBooks, getBookById };
+const linkUserToBook = async (bookId, authorId) => {
+  await BookModel.updateOne({ _id: bookId }, { author: authorId });
+
+  return `Operation completed successfully.`;
+};
+
+module.exports = { createBook, deleteBook, updateBook, getAllBooks, getBookById, linkUserToBook };

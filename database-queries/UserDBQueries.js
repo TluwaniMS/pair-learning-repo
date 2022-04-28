@@ -35,7 +35,19 @@ const updateUser = async (userId, { name, surname, email }) => {
     surname: surname,
     email: email
   });
+  
   return user;
 };
 
-module.exports = { getAllUsers, deleUser, updateUser, createUser, getUserById };
+const linkBookToUser = async (userId, bookId) => {
+  await UserModel.updateOne(
+    {
+      _id: userId
+    },
+    { $addToSet: { books: bookId } }
+  );
+
+  return `Operation completed successfully.`;
+};
+
+module.exports = { getAllUsers, deleUser, updateUser, createUser, getUserById, linkBookToUser };
