@@ -1,8 +1,8 @@
-const app = require("./index");
+const app = require("./app");
 const mongoose = require("mongoose");
 
 port = process.env.PORT;
-mongo_url = process.env.MONGO_URI;
+mongo_url = process.env.MONGO_URL;
 
 mongoose.connect(mongo_url).then(() => {
   console.log("You've successfully connected to the db...!!! :)");
