@@ -9,7 +9,7 @@ const createBookService = async ({ title, authorId, description, price }) => {
     price: price
   });
 
-  await linkBookToUser(authorId, createBook._id);
+  await linkBookToUser(authorId, createdBook._id);
 
   return `Operation completed successfully.`;
 };

@@ -19,20 +19,23 @@ const createBook = async ({ title, description, author, price }) => {
     author: author,
     price: price
   });
+
   return book;
 };
 
 const deleteBook = async (bookId) => {
-  const book = await BookModel.deleteOne({ _id: bookId });
-  return book;
+   await BookModel.deleteOne({ _id: bookId });
+
+  return `Operation completed successfully.`;
 };
 
 const updateBook = async (bookId, { title, author, description, price }) => {
-  const book = await BookModel.updateOne(
+ await BookModel.updateOne(
     { _id: bookId },
     { title: title, author: author, description: description, price: price }
   );
-  return book;
+  
+  return `Operation completed successfully.`;
 };
 
 const linkUserToBook = async (bookId, authorId) => {
@@ -41,4 +44,10 @@ const linkUserToBook = async (bookId, authorId) => {
   return `Operation completed successfully.`;
 };
 
-module.exports = { createBook, deleteBook, updateBook, getAllBooks, getBookById, linkUserToBook };
+const deleteMultipleBooksByAuthorId = async (authorId) => {
+  await BookModel.deleteMany({author:authorId})
+
+  return `Operation completed successfully.`;
+}
+
+module.exports = { createBook, deleteBook, updateBook, getAllBooks, getBookById, linkUserToBook,deleteMultipleBooksByAuthorId};
