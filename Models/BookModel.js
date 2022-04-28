@@ -9,7 +9,6 @@ const BookSchema = new Schema({
     type: String,
     required: true
   },
-
   author: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -27,4 +26,5 @@ const BookSchema = new Schema({
 });
 
 const BookModel = model("Book", BookSchema);
+
 module.exports = { BookModel };
